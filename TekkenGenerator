@@ -1,0 +1,116 @@
+# newbprojects
+
+import random
+
+
+#Tekken random match and winner generator.
+
+
+def Tekken():
+    tekken_characters = {
+        "Kazumi": .60,
+        "Kazuya": .80,
+        "King": .60,
+        "Kuma": .50,
+        "Lars": .40,
+        "Law": .60,
+        "Lee": .60,
+        "Leo": .60,
+        "Lili": .50,
+        "Lucky Cloe": .40,
+        "Master Raven": .50,
+        "Miguel": .40,
+        "Nina": .0,
+        "Panda": .50,
+        "Paul": .80,
+        "Shaheen": .50,
+        "Steve": .60,
+        "Ling Xiaoyu": .60,
+        "Yoshimitsu": .60,
+        "Akuma": .40,
+        "Alisa": .40,
+        "Asuka": .40,
+        "Bob": .40,
+        "Bryan": .60,
+        "Claudio": .60,
+        "Devil Jin": .60,
+        "Dragonov": .80,
+        "Eddy": .30,
+        "Gigas": .30,
+        "Heihachi": .50,
+        "Hwoarang": .60,
+        "JACK-7": .40,
+        "Jin": .80,
+        "Josie": .60,
+        "Katarina": .60,
+        "Lei": .50,
+        "Geese": .60,
+        "Noctis": .60,
+        "Negan": .50,
+        "Marduk": .50,
+        "Eliza": .60,
+        "Anna": .30,
+        "Julia": .50,
+        "Armor King": .60,
+        "Feng": .60
+    }
+    random_select1 = random.choice(list(tekken_characters.items()))
+    random_select2 = random.choice(list(tekken_characters.items()))
+    char1 = random_select1[0]
+    char2 = random_select2[0]
+    char1_percent = random_select1[1]
+    char2_percent = random_select2[1]
+    if char1 == char2:
+        char2 = (f"{char2}" + " 2")
+    print(f"{char1} vs {char2}")
+    print(char1_percent, char2_percent)
+    fighters = (char1, char2)
+
+    def winner():
+        if char1_percent > char2_percent:
+            return char1
+        elif char2_percent > char1_percent:
+            return char2
+        else:
+            return random.choice(fighters)
+
+    char1_wins = 0
+    char2_wins = 0
+    while char1_wins or char2_wins < 3:
+        num = random.randint(1, 100)
+        if num < 60:
+            if random.choice(fighters) == char1:
+                print(f"{char1} wins!")
+                char1_wins += 1
+            elif random.choice(fighters) == char2:
+                print(f"{char2} wins!")
+                char2_wins += 1
+            if char1_wins == 3:
+                winner = char1
+                print(f"{winner} won the match!")
+                break
+            elif char2_wins == 3:
+                winner = char2
+                print(f"{winner} won the match!")
+                break
+        elif num > 60:
+            if winner() is char1:
+                print(f"{char1} wins!")
+                char1_wins += 1
+            else:
+                print(f"{char2} wins!")
+                char2_wins += 1
+            if char1_wins == 3:
+                winner = char1
+                print(f"{winner} won the match!")
+                break
+            elif char2_wins == 3:
+                winner = char2
+                print(f"{winner} won the match!")
+                break
+
+
+Tekken()
+
+
+
